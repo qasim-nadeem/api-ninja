@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+ * MigrationController
+ *
+ * Routes for migration controller
+ *
+ */
+Route::get('create/table', 'MigrationController@createTable')->name('migration.create.table');
