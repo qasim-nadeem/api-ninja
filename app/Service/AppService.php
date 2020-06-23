@@ -1,0 +1,32 @@
+<?php
+
+
+namespace App\Service;
+
+
+use App\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+class AppService
+{
+    public function createNewApp(string $name)
+    {
+        $app = new App();
+        $app->name = $name;
+        $app->token = null;
+
+        if(Auth::guest())
+            $app->user_session_id = Session::getId();
+        else
+            $app->user_id = Auth::id();
+
+        try {
+            $app->save();
+            return true;
+        } catch (\Exception $e)
+        {
+            return false;
+        }
+    }
+}
