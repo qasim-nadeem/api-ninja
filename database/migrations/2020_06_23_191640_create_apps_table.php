@@ -24,6 +24,12 @@ class CreateAppsTable extends Migration
         Schema::table('apps', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
+
+        /*
+         *
+         * for starting app app ids from 786.
+         */
+        \Illuminate\Support\Facades\DB::update("ALTER TABLE apps AUTO_INCREMENT = 786;");
     }
 
     /**
