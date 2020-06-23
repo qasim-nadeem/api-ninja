@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AppIdInitializer extends Seeder
 {
     /**
      * Seed the application's database.
@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(AppIdInitializer::class);
+        \Illuminate\Support\Facades\DB::table('app_id')->insert([
+            'number' => '786',
+        ]);
     }
 }
