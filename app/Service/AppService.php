@@ -29,4 +29,21 @@ class AppService
             return false;
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAppForUser()
+    {
+        if(Auth::guest())
+        {
+            $app = App::where('user_session_id',Session::getId())->first();
+        }
+        else
+        {
+            $app = App::where('user_id',Auth::user()->id)->first();
+        }
+
+        return $app;
+    }
 }
