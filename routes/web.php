@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+/*
+ *
+ * HomeController
+ */
+Route::get('/', 'HomeController@index')->name('home');
 /*
  * MigrationController
  *
