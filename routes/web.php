@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
  * HomeController
  */
 Route::get('/', 'HomeController@index')->name('home');
+
+/*
+ *
+ * AppController
+ */
+Route::post('/app/create', 'AppController@create')->name('app.create.post');
 /*
  * MigrationController
  *

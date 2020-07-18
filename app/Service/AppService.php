@@ -46,4 +46,16 @@ class AppService
 
         return $app;
     }
+
+    public function isAppAlreadyExist(string $name)
+    {
+        if(Auth::check())
+        {
+            return App::where('name',$name)->where('user_id',Auth::id())->get()->count();
+        }
+        else
+        {
+            return App::where('name',$name)->where('user_session_id',Session::getId())->get()->count();
+        }
+    }
 }

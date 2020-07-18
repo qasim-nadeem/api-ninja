@@ -12,10 +12,19 @@
                     <span class="subheading">API Ninja</span>
                     <h1 class="mb-3"><span>Dummy</span> <span>API</span> <span>End Points</span></h1>
                     <p>Create Dummy api endpoints to add soul to you front-end app.</p>
-                    <form action="#" method="post">
+                    <form action="{{route('app.create.post')}}" method="post">
                         @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <div class="form-group">
-                        <input type="text" class="form-control" id="app-name" placeholder="Enter App name">
+                        <input type="text" class="form-control" name="name" id="app-name" placeholder="Enter App name">
                     </div>
                     <p><input type="submit" class="btn btn-secondary px-4 py-3" value="Create Api"></p>
                     </form>
