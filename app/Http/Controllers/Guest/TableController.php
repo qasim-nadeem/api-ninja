@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateTableRequest;
 use App\Service\AppTableService;
 use App\Service\MigrationService;
 use App\Service\TableGeneratorService;
@@ -30,7 +31,7 @@ class TableController extends Controller
         return view('table.guest.create',['appId' => $id]);
     }
 
-    public function create(Request $request)
+    public function create(CreateTableRequest $request)
     {
         $tableData = $this->service->extractTableMetaData($request->all());
         $table = $this->service->generateTableWithColumnsForUser(

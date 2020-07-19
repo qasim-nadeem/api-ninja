@@ -19,7 +19,7 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <input type="text" class="form-control" name="table-name" placeholder="Enter Table name">
+                    <input type="text" class="form-control" value="{{old('table-name')}}" name="table-name" placeholder="Enter Table name">
                 </div>
                 <div class="row">
                     <div class="col-md-6">
