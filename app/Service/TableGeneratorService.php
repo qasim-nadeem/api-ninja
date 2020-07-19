@@ -60,15 +60,16 @@ class TableGeneratorService
     }
 
     /**
+     * @param int $appId
      * @param string $tableName
      * @param array $columns
      * @return bool
      */
-    public function generateTableWithColumnsForUser(string $tableName, array $columns)
+    public function generateTableWithColumnsForUser(int $appId,string $tableName, array $columns)
     {
         $userApp = $this->appService->getAppForUser();
         try {
-            $this->appTableService->addTableToApp($tableName, $userApp->id);
+            $this->appTableService->addTableToApp($tableName, $appId);
             $this->migrationService->createTableWithColumns(
                 $userApp->id.'_'.$tableName,
                 $columns
@@ -78,5 +79,32 @@ class TableGeneratorService
         {
             return false;
         }
+    }
+
+    /**
+     * create table metadata from the form submited to create new table for
+     * guest user
+     *
+     * @param array $data
+     */
+    public function extractTableMetaData(array $data)
+    {
+        $tableName = $data['table-name'];
+        unset($data['_token']);
+        unset($data['table-name']);
+        $tableMeta = [];
+        $i = 0;
+        for ($j = 0; $j<count($data); $j+=2)
+        {
+            $tableMeta[] = [
+                'name' => $data['column-name-'.$i],
+                'type' => $data['column-type-'.$i]
+            ];
+            $i++;
+        }
+        return [
+            'tableName' => $tableName,
+            'tableMeta' => $tableMeta
+        ];
     }
 }

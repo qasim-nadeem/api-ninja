@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Service\AppTableService;
 use App\Service\MigrationService;
+use App\Service\TableGeneratorService;
 use App\Service\TableService;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,9 @@ class TableController extends Controller
 
     /**
      * TableController constructor.
-     * @param AppTableService $service
+     * @param TableGeneratorService $service
      */
-    public function __construct(AppTableService $service)
+    public function __construct(TableGeneratorService $service)
     {
         $this->service = $service;
     }
@@ -28,9 +29,15 @@ class TableController extends Controller
     {
         return view('table.guest.create',['appId' => $id]);
     }
+
     public function create(Request $request)
     {
-        dd($request->all());
-        $tableId = $this->service->addTableToApp($request->input('name'),$request->id);
+        $tableData = $this->service->extractTableMetaData($request->all());
+        $table = $this->service->generateTableWithColumnsForUser(
+            $request->id,
+            $tableData['tableName']
+            ,$tableData['tableMeta']
+        );
+        dd($table);
     }
 }
