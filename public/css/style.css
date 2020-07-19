@@ -9729,3 +9729,34 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+
+/*
+
+
+            custome styles
+
+ */
+#guest-create-table{
+    min-height: 500px;
+    padding-top: 20px;
+}
+#guest-create-table h3{
+    text-align: center;
+    margin-top: 20px;
+}
+.create-table-form{
+    width: 50%;
+    margin: 0 auto;
+}
+.create-table-form form p{
+    text-align: center;
+}
+.create-table-form .btn-add-row{
+    margin: 5px;
+    float: right;
+}
+.newColumns .row{
+    margin-top: 15px;
+}

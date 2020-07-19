@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\AppTableService;
 use App\Service\MigrationService;
+use App\Service\TableGeneratorService;
 use App\Service\TableService;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,7 @@ class MigrationController extends Controller
      * @param MigrationService $service
      * @param TableService $tableService
      */
-    public function __construct(MigrationService $service, TableService $tableService)
+    public function __construct(MigrationService $service, TableGeneratorService $tableService)
     {
 
         $this->service = $service;
@@ -50,6 +52,8 @@ class MigrationController extends Controller
 //        $this->tableService->insertTableRow('user_b', ['name' => 'qasim', 'age' => 24]);
 //        $rows = $this->tableService->getAllTableRows('user_b');
 //        $this->tableService->updateTableRow('user_b',2,['name' => 'ali',]);
+
+        dd($this->tableService->generateTableForUsers('ttable'));
         dd($this->tableService->deleteTableRow('user_b',1));
     }
 }

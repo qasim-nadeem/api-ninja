@@ -1,4 +1,4 @@
-@extends('base.guest')
+@extends('base.home')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="overlay"></div>
     <div class="container-fluid px-0">
         <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-start">
-            <img class="one-third js-fullheight align-self-end order-md-first img-fluid" src="images/undraw_co-working_825n.svg" alt="">
+            <img class="one-third js-fullheight align-self-end order-md-first img-fluid" src="{{asset('images/undraw_co-working_825n.svg')}}" alt="">
             <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
                 <div class="text mt-5">
                     <span class="subheading">API Ninja</span>

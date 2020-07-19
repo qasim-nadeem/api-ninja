@@ -17,13 +17,24 @@ use Illuminate\Support\Facades\Route;
  *
  * HomeController
  */
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'Guest\HomeController@index')->name('home');
 
 /*
  *
  * AppController
  */
-Route::post('/app/create', 'AppController@create')->name('app.create.post');
+Route::post('/app/create', 'Guest\AppController@create')->name('app.create.post');
+
+/*
+ *
+ * TableController
+ */
+Route::get('app/{id}/table/create', 'Guest\TableController@index')
+    ->middleware('checkGuestAppAccess')
+    ->name('table.create.get');
+Route::post('app/{id}/table/create', 'Guest\TableController@create')
+    ->middleware('checkGuestAppAccess')
+    ->name('table.create.post');
 /*
  * MigrationController
  *

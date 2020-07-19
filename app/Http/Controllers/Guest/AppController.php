@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateAppRequest;
 use App\Service\AppService;
-use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
@@ -24,7 +24,7 @@ class AppController extends Controller
 
     function create(CreateAppRequest $request)
     {
-        $this->service->createNewApp($request->input('name'));
-        dd('app cretaed');
+        $appId = $this->service->createNewApp($request->input('name'));
+        return redirect()->route('table.create.get',['id' => $appId]);
     }
 }

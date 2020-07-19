@@ -23,7 +23,7 @@ class AppService
 
         try {
             $app->save();
-            return true;
+            return $app->id;
         } catch (\Exception $e)
         {
             return false;
@@ -47,15 +47,25 @@ class AppService
         return $app;
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
     public function isAppAlreadyExist(string $name)
     {
         if(Auth::check())
         {
-            return App::where('name',$name)->where('user_id',Auth::id())->get()->count();
+            return App::where('name',$name)
+                ->where('user_id',Auth::id())
+                ->get()
+                ->count();
         }
         else
         {
-            return App::where('name',$name)->where('user_session_id',Session::getId())->get()->count();
+            return App::where('name',$name)
+                ->where('user_session_id',Session::getId())
+                ->get()
+                ->count();
         }
     }
 }

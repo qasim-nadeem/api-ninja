@@ -20,7 +20,7 @@ class AppTableService
         $appTable->table_name = $tableName;
         try {
             $appTable->save();
-            return true;
+            return $appTable->id;
         }  catch (\Exception $e)
         {
             return false;
