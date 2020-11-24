@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @yield('styles')
 </head>
 <body style="overflow-x: hidden">
 

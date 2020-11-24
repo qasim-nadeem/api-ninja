@@ -42,3 +42,11 @@ Route::post('app/{id}/table/create', 'Guest\TableController@create')
  *
  */
 Route::get('create/table', 'MigrationController@createTable')->name('migration.create.table');
+
+/*
+ * ApiController
+ *
+ * routes related to the final api
+ *
+ */
+Route::get('api/show/{appId}/{tableName}', 'Guest\ApiController@index')->name('api.index.get');

@@ -67,11 +67,10 @@ class TableGeneratorService
      */
     public function generateTableWithColumnsForUser(int $appId,string $tableName, array $columns)
     {
-        $userApp = $this->appService->getAppForUser();
         try {
             $this->appTableService->addTableToApp($tableName, $appId);
             $this->migrationService->createTableWithColumns(
-                $userApp->id.'_'.$tableName,
+                $appId.'_'.$tableName,
                 $columns
             );
             return true;

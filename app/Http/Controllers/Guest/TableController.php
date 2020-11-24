@@ -34,11 +34,23 @@ class TableController extends Controller
     public function create(CreateTableRequest $request)
     {
         $tableData = $this->service->extractTableMetaData($request->all());
-        $table = $this->service->generateTableWithColumnsForUser(
+        $isSuccess = $this->service->generateTableWithColumnsForUser(
             $request->id,
             $tableData['tableName']
             ,$tableData['tableMeta']
         );
-        dd($table);
+
+        if($isSuccess) {
+            return redirect()->route('api.index.get',
+                [
+                    'appId' => $request->id,
+                    'tableName' => $tableData['tableName']
+                ]
+            );
+        }
+
+        return redirect()
+            ->route('home')
+            ->with('error','Something happened, Our team is resolving the issue.');
     }
 }

@@ -110,7 +110,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/apininja/resources/js/appTable.js */"./resources/js/appTable.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\api-ninja\resources\js\appTable.js */"./resources/js/appTable.js");
 
 
 /***/ })
