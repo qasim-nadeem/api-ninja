@@ -11,37 +11,45 @@
                 <h3>Api Details</h3>
                 <div class="api-details-container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 endpoint-info-container">
                             <h4>Create</h4>
-                            <h6>End-Point (get request)</h6>
                             <p>
-                                <span>GET</span>
-                                {{config('app.url')}}/api/{{$appId}}/{{$tableName}}/create
-                                <span>Copy</span>
+                                <span>POST</span>
+                                <span class="endpoint">{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/create</span>
+                                <span class="btn-copy">Copy</span>
                             </p>
                             <h6>Responses</h6>
                             {
                                 'true'
                             }, {'false'}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 endpoint-info-container">
                             <h4>Read</h4>
-                            <h6>End-Point (get request)</h6>
-                            <p>{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</p>
+                            <p>
+                                <span>GET</span>
+                                <span class="endpoint">{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</span>
+                                <span class="btn-copy">Copy</span>
+                            </p>
                             <h6>Responses</h6>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 endpoint-info-container">
                             <h4>Update</h4>
-                            <h6>End-Point (get request)</h6>
-                            <p>{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</p>
+                            <p>
+                                <span>POST</span>
+                                <span class="endpoint">{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</span>
+                                <span class="btn-copy">Copy</span>
+                            </p>
                             <h6>Responses</h6>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 endpoint-info-container">
                             <h4>Delete</h4>
-                            <h6>End-Point (get request)</h6>
-                            <p>{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</p>
+                            <p>
+                                <span>DELETE</span>
+                                <span class="endpoint">{{config('app.url')}}/api/{{$appId}}/{{$tableName}}/{id}</span>
+                                <span class="btn-copy">Copy</span>
+                            </p>
                             <h6>Responses</h6>
                         </div>
                     </div>
@@ -52,7 +60,7 @@
 @endsection
 
 @section('scripts')
-
+    <script src="{{asset('js/api.js')}}"></script>
 @endsection
 
 

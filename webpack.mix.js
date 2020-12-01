@@ -17,3 +17,4 @@ mix.js('resources/js/appTable.js','public/js/appTable.js')
 
 //use this for compiling your asset for styling
 mix.less('resources/sass/api.less', 'public/css');
+mix.js('resources/js/api.js', 'public/js');
